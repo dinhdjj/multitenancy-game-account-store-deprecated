@@ -13,7 +13,8 @@
         "innocenzi/laravel-vite": "0.2.*",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
-        "laravel/tinker": "^2.7"
+        "laravel/tinker": "^2.7",
+        "lorisleiva/laravel-actions": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -34,7 +35,8 @@
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-ignition": "^1.0",
         "spatie/pest-plugin-snapshots": "^1.1",
-        "spatie/pest-plugin-test-time": "^1.1"
+        "spatie/pest-plugin-test-time": "^1.1",
+        "wulfheart/laravel-actions-ide-helper": "^0.3.0"
     },
     "autoload": {
         "psr-4": {

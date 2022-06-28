@@ -14,6 +14,7 @@ Fully initialize the project by running the following commands:
     php artisan migrate
     php artisan ide-helper:generate
     php artisan ide-helper:meta
+    php artisan ide-helper:actions
     php artisan ide-helper:models --nowrite
 ```
 
