@@ -9,13 +9,13 @@ use Stancl\Tenancy\Contracts\Tenant;
 
 class Filesystem implements TenancyBootstrapper
 {
-    public $oldPublicUrl;
+    public ?string $oldPublicUrl;
 
     public function bootstrap(Tenant $tenant): void
     {
         if (\in_array('public', config('tenancy.filesystem.disks'), true)) {
             $this->oldPublicUrl = config('filesystems.disks.public.url');
-            config(['filesystems.disks.public.url' => config('app.url').'/storage/'.config('tenancy.filesystem.suffix_base').$tenant->id]);
+            config(['filesystems.disks.public.url' => config('app.url').'/storage/'.config('tenancy.filesystem.suffix_base').$tenant->getTenantKey()]);
         }
     }
 

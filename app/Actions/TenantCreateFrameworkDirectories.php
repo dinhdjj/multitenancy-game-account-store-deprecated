@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Actions;
 
-use App\Models\Tenant;
 use File;
 use Lorisleiva\Actions\Concerns\AsAction;
+use Stancl\Tenancy\Contracts\Tenant;
 use Stancl\Tenancy\Events\TenantCreated;
 
 class TenantCreateFrameworkDirectories
