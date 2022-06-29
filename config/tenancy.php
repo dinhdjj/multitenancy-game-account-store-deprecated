@@ -2,6 +2,8 @@
 
 declare(strict_types=1);
 
+$FILESYSTEM_SUFFIX_BASE = '_tenant_';
+
 return [
     'tenant_model' => App\Models\Tenant::class,
     'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
@@ -27,6 +29,7 @@ return [
         Stancl\Tenancy\Bootstrappers\FilesystemTenancyBootstrapper::class,
         Stancl\Tenancy\Bootstrappers\QueueTenancyBootstrapper::class,
         // Stancl\Tenancy\Bootstrappers\RedisTenancyBootstrapper::class, // Note: phpredis is needed
+        App\Tenancy\Bootstrappers\Filesystem::class,
     ],
 
     /**
@@ -93,7 +96,7 @@ return [
         /**
          * Each disk listed in the 'disks' array will be suffixed by the suffix_base, followed by the tenant_id.
          */
-        'suffix_base' => env('TENANCY_FILESYSTEM_PREFIX', 'tenant-'),
+        'suffix_base' => $FILESYSTEM_SUFFIX_BASE,
         'disks' => [
             'local',
             'public',
@@ -108,7 +111,7 @@ return [
         'root_override' => [
             // Disks whose roots should be overriden after storage_path() is suffixed.
             'local' => '%storage_path%/app/',
-            'public' => '%storage_path%/app/public/',
+            'public' => storage_path('app/public/'.$FILESYSTEM_SUFFIX_BASE.'%tenant%/'),
         ],
 
         /**
