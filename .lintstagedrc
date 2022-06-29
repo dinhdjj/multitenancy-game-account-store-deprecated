@@ -3,5 +3,5 @@
         "prettier --cache --write",
         "eslint --cache --fix"
     ],
-    "*.php": "./vendor/bin/php-cs-fixer fix"
+    "*.php": "./vendor/bin/php-cs-fixer fix --config=.php-cs-fixer.php"
 }
