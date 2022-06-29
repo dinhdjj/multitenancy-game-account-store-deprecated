@@ -114,11 +114,14 @@ class TenancyServiceProvider extends ServiceProvider
 
     protected function mapRoutes(): void
     {
-        if (file_exists(base_path('routes/tenant.php'))) {
-            Route::namespace(static::$controllerNamespace)
-                ->group(base_path('routes/tenant.php'))
-            ;
-        }
+        Route::namespace(static::$controllerNamespace)
+            ->name('tenant.')
+            ->middleware([
+                'web',
+                'tenant',
+            ])
+            ->group(base_path('routes/tenant.php'))
+        ;
     }
 
     protected function makeTenancyMiddlewareHighestPriority(): void
